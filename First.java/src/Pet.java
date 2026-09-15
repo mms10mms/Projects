@@ -1,52 +1,64 @@
-
 //Michael Slaughter
 
 public class Pet {
-    //Setting my Variable
     private String name;
-
+    private String type;
+    private int age;
 
     public Pet() {
-
         this.setName("Pet Name");
+        this.setType("Unknown");
+        this.setAge(0);
     }
 
+    public Pet(String name, String type, int age) {
+        this.setName(name);
+        this.setType(type);
+        this.setAge(age);
+    }
 
     public void setName(String newName) {
         this.name = newName;
     }
 
-
     public String getName() {
         return this.name;
     }
 
+    public void setType(String newType) {
+        this.type = newType;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setAge(int newAge) {
+        this.age = newAge;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public String speak() {
+        if (this.type.equalsIgnoreCase("dog")) {
+            return "woof";
+        } else if (this.type.equalsIgnoreCase("cat")) {
+            return "mreow";
+        } else {
+            return "default noise";
+        }
+    }
 
     public String toString() {
         String result = "";
-        result += "Pet information:\n";
-        result += "Name: " + this.name;
+        result += "Pet Information:\n";
+        result += "Name: " + this.name + "\n";
+        result += "Type: " + this.type + "\n";
+        result += "Age: " + this.age + "\n";
+        result += "Sound: " + this.speak() + "\n";
         return result;
-    }
-
-
-    public static void main(String[] args) {
-
-        Pet pet1 = new Pet();
-
-        System.out.println(pet1.toString());
-
-
-        System.out.println();
-
-
-        Pet pet2 = new Pet();
-
-        pet2.setName("Buster");
-
-        System.out.println(pet2.toString());
     }
 }
 
-
-// I had a little trouble on this one but it still works! Any comments or feedback would be nice please.
