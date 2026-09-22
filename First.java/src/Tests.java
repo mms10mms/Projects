@@ -1,24 +1,62 @@
-import java.text.DecimalFormat;
 
 //Michael Slaughter
 
+import java.util.Scanner;
+
 public class Tests {
-    public static void main(String[] args) {
-        // My Variables
-        double score1 = 88.2;
-        double score2 = 78.9;
-        double score3 = 97.6;
 
-        // Calculate the average
-        double average = (score1 + score2 + score3) / 3.0;
+    private int scoreCount;
+    private double testAverage;
 
 
-        DecimalFormat df = new DecimalFormat("0.00");
+    public Tests() {
+        this.scoreCount = 0;
+        this.testAverage = 0.0;
+    }
 
-        // This part will display the 3 test scores and their average
-        System.out.println("Test score 1:   " + score1);
-        System.out.println("Test score 2:  " + score2);
-        System.out.println("Test score 3:  " + score3);
-        System.out.println("The average of 3 test scores is:  " + df.format(average));
+
+    public int getScoreCount() {
+        return scoreCount;
+    }
+
+
+    public double getTestAverage() {
+        return testAverage;
+    }
+
+
+    public void getAverage() {
+        Scanner scanner = new Scanner(System.in);
+        double sum = 0.0;
+        int count = 0;
+
+        // Prompt user and prime the loop
+        System.out.print("Enter a test score (-1 to quit): ");
+        double score = scanner.nextDouble();
+
+        // Sentinel loop accepting values until -1
+        while (score != -1) {
+            sum += score;
+            count++;
+
+            System.out.print("Enter a test score (-1 to quit): ");
+            score = scanner.nextDouble();
+        }
+
+        // Calculate and update the instance variables
+        this.scoreCount = count;
+        this.testAverage = sum / count;
+    }
+
+    // Formatted string representation of the object
+    @Override
+    public String toString() {
+        // Explicitly handle the NaN edge case to prevent potential formatting issues
+        if (Double.isNaN(testAverage)) {
+            return "The average of the " + scoreCount + " scores entered is NaN.";
+        }
+        // Format to 2 decimal places for valid numbers
+        return String.format("The average of the %d scores entered is %.2f.", scoreCount, testAverage);
     }
 }
+

@@ -2,19 +2,13 @@
 
 public class Runner {
     public static void main(String[] args) {
+        // Instantiate the blueprint object
+        Tests examTracker = new Tests();
 
-        Pet defaultPet = new Pet();
-        System.out.println(defaultPet);
+        // Gather user input and calculate statistics
+        examTracker.getAverage();
 
-
-        Pet dog = new Pet("Buster", "dog", 3);
-        System.out.println(dog);
-
-
-        Pet cat = new Pet("Whiskers", "cat", 5);
-        System.out.println(cat);
-
-        Pet fish = new Pet("Goldie", "fish", 1);
-        System.out.println(fish);
+        // Print final results using toString()
+        System.out.println(examTracker.toString());
     }
 }
